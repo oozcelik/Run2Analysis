@@ -69,12 +69,12 @@ process.mkcands = cms.EDAnalyzer("JPsiKKKPATRunII",
      muons       = cms.InputTag('oniaSelectedMuons'), #oniaPATMuonsWithoutTrigger-  #selectedPatMuons
      revtxtrks   = cms.InputTag('generalTracks'),
      trackQualities = cms.untracked.vstring('loose','tight','highPurity'),
-     TriggersForMatching = cms.untracked.vstring("HLT_Dimuon16_Jpsi_v3", "HLT_DoubleMu4_JpsiTrk_Displaced_v3", "HLT_Dimuon6_Jpsi_NoVertexing_v3", "HLT_DoubleMu4_3_Jpsi_Displaced_v3"), #HLT_DoubleMu4_3_Jpsi_Displaced_v2
-     FiltersForMatching = cms.untracked.vstring("hltDisplacedmumuFilterDimuon16Jpsi", "hltJpsiTkVertexFilter", "hltDimuon6JpsiL3Filtered", "hltDisplacedmumuFilterDoubleMu43Jpsi" ) #hltDisplacedmumuFilterDoubleMu43Jpsi
+     TriggersForMatching = cms.untracked.vstring("HLT_DoubleMu4_3_Jpsi_Displaced_v2", "HLT_DoubleMu4_3_Jpsi_Displaced_v3", "HLT_DoubleMu4_3_Jpsi_Displaced_v4", "HLT_DoubleMu4_3_Jpsi_Displaced_v5", "HLT_DoubleMu4_3_Jpsi_Displaced_v6" ), # tried this "HLT_Dimuon16_Jpsi_v3", "HLT_DoubleMu4_JpsiTrk_Displaced_v3", "HLT_Dimuon6_Jpsi_NoVertexing_v3"
+     FiltersForMatching = cms.untracked.vstring("hltDisplacedmumuFilterDoubleMu43Jpsi", "hltDisplacedmumuFilterDoubleMu43Jpsi", "hltDisplacedmumuFilterDoubleMu43Jpsi", "hltDisplacedmumuFilterDoubleMu43Jpsi", "hltDisplacedmumuFilterDoubleMu43Jpsi" ) #hltDisplacedmumuFilterDoubleMu43Jpsi
 )
 
 process.TFileService = cms.Service("TFileService",
-    fileName = cms.string('MuOniaRun2012_PhaseSpMC2016_ntpl.root')
+    fileName = cms.string('MuOniaRun2016_ntpl.root')
 )
 process.mySequence = cms.Sequence(
                    process.oniaPATMuonsWithTriggerSequence *
