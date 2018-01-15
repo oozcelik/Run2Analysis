@@ -13,7 +13,7 @@ void bpmassphifit(char FileName[128])
 
   float JpsiPhiKMassmin=5.15, JpsiPhiKMassmax=5.45;
   std::ofstream myoutfile("PhiM.txt");
-   TH1F *varPhiMass = new TH1F ("PhiMass","m(#phi{+}) GeV", 6, 0.986,1.058); // 18
+   TH1F *varPhiMass = new TH1F ("PhiMass","m(#phi{+}) GeV", 18, 0.986,1.058); // 18
 
    varPhiMass-> GetXaxis()->SetTitle("PhiMass");
    varPhiMass->GetYaxis()->SetTitle("Candidates / 4 MeV");
@@ -38,10 +38,10 @@ void bpmassphifit(char FileName[128])
         t->SetTextColor(kRed);
 
        char DeltaM[28];
-      for (int ii = 0; ii < 6; ii++) {
+       for (int ii = 0; ii < 18; ii++) {
 
-        float dmbinlow = 0.986 + (float) ii * 0.012; // 0.004
-        float dmbinhigh = 0.986 + (float) (ii + 1) * 0.012; //0.004
+        float dmbinlow = 0.986 + (float) ii * 0.004; // 0.004
+        float dmbinhigh = 0.986 + (float) (ii + 1) * 0.004; //0.004
 
         RooRealVar varJpsiPhiKMass("varJpsiPhiKMass", "m(J/#\psi#phiK^{+}) GeV", JpsiPhiKMassmin,  5.45);
         RooRealVar varphimass("varphimass", "MassOfPhi " , dmbinlow, dmbinhigh );
@@ -99,7 +99,7 @@ void bpmassphifit(char FileName[128])
        varPhiMass->SetBinContent(ii+1, nSigBp.getVal());
        varPhiMass->SetBinContent(ii+1, nSigBp.getError());
 
- }
+     }
      TCanvas * c=new TCanvas("c","c",800,600);
      varPhiMass->Draw();
  //  varPhiMass->GetYaxis()->SetRangeUser(0., 4000.);
