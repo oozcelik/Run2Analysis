@@ -49,7 +49,6 @@ process.cleanPatTracks.checkOverlaps.electrons.requireNoOverlaps = cms.bool(Fals
 ### Set up PAT tracks ###
 #########################
 from PhysicsTools.PatAlgos.tools.trackTools import *
-from PhysicsTools.PatAlgos.tools.coreTools  import *
 
 makeTrackCandidates(process,                  # patAODTrackCands
         label='TrackCands',                   # output collection will be 'allLayer0TrackCands', 'allLayer1TrackCands', 'selectedLayer1TrackCands'
@@ -85,42 +84,36 @@ switchOnTriggerMatchEmbedding(process, triggerMatchers = ['cleanMuonHLTriggerMat
 
 
 # turn off MC matching for the process
+from PhysicsTools.PatAlgos.tools.coreTools  import *
 process.patDefaultSequence.remove(process.muonMatch)
 process.patDefaultSequence.remove(process.electronMatch)
 process.patDefaultSequence.remove(process.photonMatch)
 process.patDefaultSequence.remove(process.tauMatch)
 process.patDefaultSequence.remove(process.tauGenJetMatch)
-
+process.patDefaultSequence.remove(process.selectedPatTaus)
+process.patDefaultSequence.remove(process.cleanPatTaus)
+process.patDefaultSequence.remove(process.countPatTaus)
 process.patDefaultSequence.remove(process.tauGenJets)
 process.patDefaultSequence.remove(process.tauGenJetsSelectorAllHadrons)
-
+process.patDefaultSequence.remove(process.patJetPartonAssociationLegacy)  
+process.patDefaultSequence.remove(process.patJetFlavourAssociationLegacy) 
+process.patDefaultSequence.remove(process.patJetFlavourAssociation)
 process.patDefaultSequence.remove(process.patJetPartonMatch)
 process.patDefaultSequence.remove(process.patJetGenJetMatch)
 process.patDefaultSequence.remove(process.patJetCorrFactors)
 process.patDefaultSequence.remove(process.patJetCharge)
 process.patDefaultSequence.remove(process.patJetPartons)
 process.patDefaultSequence.remove(process.patJetPartonsLegacy)            
-process.patDefaultSequence.remove(process.patJetPartonAssociationLegacy)  
-process.patDefaultSequence.remove(process.patJetFlavourAssociationLegacy) 
-process.patDefaultSequence.remove(process.patJetFlavourAssociation)
 process.patDefaultSequence.remove(process.patJets)
-
 process.patDefaultSequence.remove(process.selectedPatJets)
 process.patDefaultSequence.remove(process.cleanPatJets)
 process.patDefaultSequence.remove(process.countPatJets)
-
-process.patDefaultSequence.remove(process.selectedPatTaus)
-process.patDefaultSequence.remove(process.cleanPatTaus)
-process.patDefaultSequence.remove(process.countPatTaus)
-
 process.patDefaultSequence.remove(process.selectedPatElectrons)
 process.patDefaultSequence.remove(process.cleanPatElectrons)
 process.patDefaultSequence.remove(process.countPatElectrons)
-
 process.patDefaultSequence.remove(process.selectedPatPhotons)
 process.patDefaultSequence.remove(process.cleanPatPhotons)
 process.patDefaultSequence.remove(process.countPatPhotons)
-
 process.patDefaultSequence.remove(process.patMETs)
 
 ##################################good collisions############################################
