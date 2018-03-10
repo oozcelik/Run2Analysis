@@ -81,7 +81,7 @@ process.cleanMuonHLTriggerMatch = cms.EDProducer(
 
 ### Switch on PAT trigger ###
 from PhysicsTools.PatAlgos.tools.trigTools import *
-switchOnTriggerMatchEmbedding(process, triggerMatchers = ['cleanMuonHLTriggerMatchHLT'], hltProcess = triggerProcessName, outputModule = '')
+switchOnTriggerMatchEmbedding(process, triggerMatchers = ['cleanMuonHLTriggerMatch'], hltProcess = triggerProcessName, outputModule = '')
 
 
 # turn off MC matching for the process
