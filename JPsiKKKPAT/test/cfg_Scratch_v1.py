@@ -31,7 +31,7 @@ process.source = cms.Source('PoolSource',
 
 
 from Configuration.AlCa.GlobalTag_condDBv2 import GlobalTag
-process.GlobalTag = GlobalTag(process.GlobalTag, '92X_dataRun2_Prompt_v4', '')
+process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:run2_data', '')
 
 process.load("PhysicsTools.PatAlgos.patSequences_cff")
 
@@ -63,8 +63,6 @@ makeTrackCandidates(process,                  # patAODTrackCands
 l1cands = getattr(process, 'patTrackCands')
 l1cands.addGenMatch = False
 
-removeMCMatching(process, ['All'], outputModules = [])
-
 
 ### Trigger matching ###
 
@@ -80,11 +78,12 @@ process.cleanMuonHLTriggerMatch = cms.EDProducer(
 
 ### Switch on PAT trigger ###
 from PhysicsTools.PatAlgos.tools.trigTools import *
-switchOnTriggerMatchEmbedding(process, triggerMatchers = ['cleanMuonHLTriggerMatch'], hltProcess = triggerProcessName, outputModule = '')
+switchOnTriggerMatchEmbedding(process, triggerMatchers = ['cleanMuonHLTriggerMatch'], hltProcess = 'HLT', outputModule = '')
 
 
 # turn off MC matching for the process
 from PhysicsTools.PatAlgos.tools.coreTools  import *
+removeMCMatching(process, ['All'], outputModules = [])
 process.patDefaultSequence.remove(process.muonMatch)
 process.patDefaultSequence.remove(process.electronMatch)
 process.patDefaultSequence.remove(process.photonMatch)
